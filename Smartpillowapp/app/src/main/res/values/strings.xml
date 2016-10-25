@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Smartpillow</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string-array name="graph_array">
+        <item>Sleep Stage</item>
+        <item>Temperature</item>
+        <item>Humidity</item>
+        <item>Sound</item>
+        <item>Motion</item>
+        <item>Light</item>
+        <item>Beta Waves</item>
+        <item>Delta Waves</item>
+        <item>Gamma Waves</item>
+        <item>Theta Waves</item>
+        <item>Alpha Waves</item>
+        <item>Atention</item>
+        <item>Meditation</item>
+    </string-array>
+
+</resources>
