@@ -1,5 +1,4 @@
 package smartpillow.org.smartpillow;
-
 import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Color;
@@ -13,11 +12,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.cloudant.client.api.ClientBuilder;
 import com.cloudant.client.api.CloudantClient;
 import com.cloudant.client.api.Database;
-
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
@@ -26,13 +23,11 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.AxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-
 import java.util.ArrayList;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -63,7 +58,6 @@ public class Statistic extends Fragment {
     private ArrayList<Entry> thetaSeries;
     private ArrayList<Entry> attentionSeries;
     private ArrayList<Entry> meditationSeries;
-
     private String DB_NAME = "sensor_data";
     private String ACCOUNT = "1cb9f2e7-744c-4ff4-8f08-99569ee60a8b-bluemix";
     private String USERNAME = "hentridesolideselfwaspro";
@@ -183,7 +177,6 @@ public class Statistic extends Fragment {
                     break;
             }
         }
-
         AxisValueFormatter formatter = new AxisValueFormatter() {
 
             @Override
@@ -203,7 +196,6 @@ public class Statistic extends Fragment {
         xAxis.setLabelRotationAngle(45F);
 
         ArrayList<ILineDataSet> lineDataSets = new ArrayList<>();
-
         LineDataSet lineDataSet1 = null;
         LineDataSet lineDataSet2 = null;
 
@@ -275,9 +267,7 @@ public class Statistic extends Fragment {
         }
         lineChart.setData(new LineData(lineDataSets));
         //lineChart.notifyDataSetChanged();
-
         lineChart.setVisibleXRangeMaximum(65f);
-
     }
 
     class ReadAsyncTask extends AsyncTask<String, Void, List<SensorData>> {
@@ -287,7 +277,6 @@ public class Statistic extends Fragment {
             List<SensorData> users = null;
             try {
                 String id = arg0[0];
-
                 // Create a new CloudantClient instance for account endpoint <ACCOUNT>.cloudant.com
                 CloudantClient client = ClientBuilder.account(ACCOUNT)
                         .username(USERNAME)
@@ -352,11 +341,9 @@ public class Statistic extends Fragment {
                 public int compare(SensorData p1, SensorData p2) {
                     return p1.getNumber() - p2.getNumber(); // Ascending
                 }
-
             });
             sensorData = users;
             createGraph(1);
         }
     }
-
 }
