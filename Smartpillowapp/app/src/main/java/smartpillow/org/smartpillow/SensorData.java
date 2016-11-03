@@ -105,6 +105,4 @@ public class SensorData {
     public int getSecond() {
         return second;
     }
-
-
 }
