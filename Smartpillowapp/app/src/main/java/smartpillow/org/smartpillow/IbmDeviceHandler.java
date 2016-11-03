@@ -7,13 +7,14 @@ import com.ibm.iotf.client.device.Command;
 import com.ibm.iotf.client.device.CommandCallback;
 import com.ibm.iotf.client.device.DeviceClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
-
 /**
  * Created by Armando on 10/19/2016.
  */
-public class IbmDeviceHandler {
+public class IbmDeviceHandler 
+{
 
-    public void sendMessage(){
+    public void sendMessage()
+    {
         //Provide the device specific data, as well as Auth-key and token using Properties class
         Properties options = new Properties();
         
@@ -22,7 +23,7 @@ public class IbmDeviceHandler {
         options.setProperty("id", "nexus6p");
         options.setProperty("auth-method", "token");
         options.setProperty("auth-token", "quesadillas");
-
+        
         DeviceClient myClient = null;
         try 
         {
@@ -32,7 +33,6 @@ public class IbmDeviceHandler {
         {
             e.printStackTrace();
         }
-
         //Connect to the Watson IoT Platform
         try 
         {
@@ -41,7 +41,6 @@ public class IbmDeviceHandler {
         {
             e.printStackTrace();
         }
-
         //Generate a JSON object of the event to be published
         JsonObject event = new JsonObject();
         event.addProperty("status", "connect");
