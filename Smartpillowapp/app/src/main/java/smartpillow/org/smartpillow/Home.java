@@ -1,5 +1,4 @@
 package smartpillow.org.smartpillow;
-
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
@@ -13,13 +12,12 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 /**
  * Created by Armando on 10/17/2016.
  */
-public class Home extends Fragment{
+public class Home extends Fragment
+{
     private View myView;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -28,7 +26,8 @@ public class Home extends Fragment{
         return myView;
     }
 
-    private void setText(  ) {
+    private void setText(  ) 
+    {
         TextView percentageTextView = (TextView) myView.findViewById(R.id.percentage);
         percentageTextView.setText(MainActivity.percentage + "");
     }
