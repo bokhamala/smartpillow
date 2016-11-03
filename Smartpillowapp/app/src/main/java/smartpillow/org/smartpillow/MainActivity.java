@@ -1,5 +1,4 @@
 package smartpillow.org.smartpillow;
-
 import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -26,8 +25,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ProgressBar mProgressBar;
     private ProgressBar bProgressBar;
@@ -40,7 +38,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,42 +46,44 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                                           this, drawer, toolbar, R.string.navigation_drawer_open, 
+                                           R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         android.app.FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame, new Home()).commit();
         fillCircle();
-
     }
 
-    public void fillCircle(){
+    public void fillCircle()
+    {
         mProgressBar = (ProgressBar) findViewById(R.id.circle_progress_bar);
         bProgressBar = (ProgressBar) findViewById(R.id.circle_progress_bar_back);
         new Thread(
-                new Runnable() {
+                new Runnable() 
+                {
                     int i = 0;
                     int progressStatus = 0;
 
-
-                    public void run() {
-                        while (progressStatus < percentage) {
+                    public void run() 
+                    {
+                        while (progressStatus < percentage) 
+                        {
                             progressStatus += 3;
                             try {
                                 Thread.sleep(20);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
-
                             // Update the progress bar
-                            handler.post(new Runnable() {
-                                public void run() {
+                            handler.post(new Runnable() 
+                            {
+                                public void run() 
+                                {
                                     mProgressBar
                                             .setProgress(progressStatus);
                                     i++;
@@ -114,46 +113,49 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) 
+    {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_settings) 
+        {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(MenuItem item) 
+    {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         android.app.FragmentManager fragmentManager = getFragmentManager();
-        if (id == R.id.nav_home) {
+        if (id == R.id.nav_home) 
+        {
             fragmentManager.beginTransaction().replace(R.id.content_frame, new Home()).commit();
             mProgressBar.setVisibility(View.VISIBLE);
             bProgressBar.setVisibility(View.VISIBLE);
             fillCircle();
-        } else if (id == R.id.nav_stats) {
+        } else if (id == R.id.nav_stats) 
+        {
             fragmentManager.beginTransaction().replace(R.id.content_frame, new Statistic()).commit();
             mProgressBar.setVisibility(View.GONE);
             bProgressBar.setVisibility(View.GONE);
             // Handle the camera action
-        } else if (id == R.id.nav_about) {
+        } else if (id == R.id.nav_about) 
+        {
             fragmentManager.beginTransaction().replace(R.id.content_frame, new About()).commit();
             mProgressBar.setVisibility(View.GONE);
             bProgressBar.setVisibility(View.GONE);
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_share) 
+        {
+        } else if (id == R.id.nav_send) 
+        {
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
