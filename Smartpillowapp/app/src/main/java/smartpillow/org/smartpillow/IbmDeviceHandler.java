@@ -1,15 +1,11 @@
 package smartpillow.org.smartpillow;
 import java.io.File;
 import java.util.Properties;
-
 import com.google.gson.JsonObject;
-
-
 import com.ibm.iotf.client.device.DeviceClient;
 import com.ibm.iotf.client.device.Command;
 import com.ibm.iotf.client.device.CommandCallback;
 import com.ibm.iotf.client.device.DeviceClient;
-
 import org.eclipse.paho.client.mqttv3.MqttException;
 
 /**
@@ -20,7 +16,7 @@ public class IbmDeviceHandler {
     public void sendMessage(){
         //Provide the device specific data, as well as Auth-key and token using Properties class
         Properties options = new Properties();
-
+        
         options.setProperty("org", "ngw3xy");
         options.setProperty("type", "Nexus6P");
         options.setProperty("id", "nexus6p");
@@ -28,17 +24,21 @@ public class IbmDeviceHandler {
         options.setProperty("auth-token", "quesadillas");
 
         DeviceClient myClient = null;
-        try {
+        try 
+        {
             //Instantiate the class by passing the properties file
             myClient = new DeviceClient(options);
-        } catch (Exception e) {
+        } catch (Exception e) 
+        {
             e.printStackTrace();
         }
 
         //Connect to the Watson IoT Platform
-        try {
+        try 
+        {
             myClient.connect();
-        } catch (MqttException e) {
+        } catch (MqttException e) 
+        {
             e.printStackTrace();
         }
 
